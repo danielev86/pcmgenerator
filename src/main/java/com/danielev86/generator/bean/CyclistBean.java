@@ -10,6 +10,7 @@ public class CyclistBean {
 	private Integer characCobble;
 	private Integer characTimetrial;
 	private Integer characPrologue;
+	private Integer characSprint;
 	private Integer characAcceleration;
 	private Integer characEndurance;
 	private Integer characResistance;
@@ -128,6 +129,14 @@ public class CyclistBean {
 
 	public void setCharacBaroudeur(Integer characBaroudeur) {
 		this.characBaroudeur = characBaroudeur;
+	}
+
+	public Integer getCharacSprint() {
+		return characSprint;
+	}
+
+	public void setCharacSprint(Integer characSprint) {
+		this.characSprint = characSprint;
 	}
 
 }
