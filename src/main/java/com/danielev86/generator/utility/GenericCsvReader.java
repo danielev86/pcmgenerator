@@ -1,4 +1,4 @@
-package com.danielev86.pcmgenerator.utility;
+package com.danielev86.generator.utility;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.danielev86.pcmgenerator.utility;
+package com.danielev86.generator.utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,12 +33,12 @@ public class PcmGeneratorFactoryLoader {
 				cyclist.setCharacTimetrial( Integer.valueOf(record[6].toString()) );
 				cyclist.setCharacPrologue(  Integer.valueOf(record[7].toString()) );
 				cyclist.setCharacSprint( Integer.valueOf( record[8].toString() ) );
-				cyclist.setCharacAcceleration(  Integer.valueOf( record[7].toString() ) );
-				cyclist.setCharacEndurance( Integer.valueOf( record[8].toString() ) );
-				cyclist.setCharacResistance( Integer.valueOf( record[9].toString() ) );
-				cyclist.setCharacRecuperation( Integer.valueOf( record[10].toString() ) );
-				cyclist.setCharacHill( Integer.valueOf( record[11].toString() ) );
-				cyclist.setCharacBaroudeur( Integer.valueOf( record[12].toString() ) );
+				cyclist.setCharacAcceleration(  Integer.valueOf( record[9].toString() ) );
+				cyclist.setCharacEndurance( Integer.valueOf( record[10].toString() ) );
+				cyclist.setCharacResistance( Integer.valueOf( record[11].toString() ) );
+				cyclist.setCharacRecuperation( Integer.valueOf( record[12].toString() ) );
+				cyclist.setCharacHill( Integer.valueOf( record[13].toString() ) );
+				cyclist.setCharacBaroudeur( Integer.valueOf( record[14].toString() ) );
 				
 				lstResult.add(cyclist);
 				

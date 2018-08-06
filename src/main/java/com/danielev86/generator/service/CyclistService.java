@@ -1,4 +1,4 @@
-package com.danielev86.generator.cyclistgenerator;
+package com.danielev86.generator.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,13 +8,14 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.danielev86.generator.backend.CyclistManager;
 import com.danielev86.generator.bean.CyclistBean;
-import com.danielev86.pcmgenerator.utility.EnviromentPropertyReader;
-import com.danielev86.pcmgenerator.utility.GenericWriter;
-import com.danielev86.pcmgenerator.utility.PcmGeneratorFactoryLoader;
+import com.danielev86.generator.utility.EnviromentPropertyReader;
+import com.danielev86.generator.utility.GenericWriter;
+import com.danielev86.generator.utility.PcmGeneratorFactoryLoader;
 
 @Component
-public class CyclistGeneratorService {
+public class CyclistService {
 
 	public static final String WHITE_SPACE = " ";
 
@@ -28,8 +29,11 @@ public class CyclistGeneratorService {
 	
 	@Autowired
 	private PcmGeneratorFactoryLoader pcmGeneratorFactory;
+	
+	@Autowired
+	private CyclistManager cyclistManager;
 
-	public void queryCyclistUpdateGenerator(String inPath, String outPath, String split) throws IOException {
+	public List<String> queryCyclistUpdateGenerator(String inPath, String outPath, String split) throws IOException {
 		List<String> lstResult = new ArrayList<>();
 		List<CyclistBean> lstCyclist = pcmGeneratorFactory.loadCyclistData(inPath, split);
 
@@ -61,14 +65,24 @@ public class CyclistGeneratorService {
 								+ WHITE_SPACE)
 						.append(WHITE_SPACE + "WHERE" + WHITE_SPACE)
 						.append(WHITE_SPACE + env.getFieldLastName() + "='" + cyclist.getLastName() + "' AND "
-								+ env.getFieldFirstName() + "='" + cyclist.getFirstName() + "' ");
+								+ env.getFieldFirstName() + "='" + cyclist.getFirstName() + "'; ");
 
 				lstResult.add(sqlQuery.toString());
 
 			}
 		}
 
-		writer.writeOnFile(outPath, lstResult);
+		return lstResult;
+	}
+	
+	public void updateCyclist(String inPath, String outPath, String split) throws IOException {
+		
+		List<String> queries = queryCyclistUpdateGenerator(inPath, outPath, split);
+		for (String query:queries) {
+			System.out.println(query);
+			cyclistManager.updateCyclistInfo(query);
+		}
+		
 	}
 
 }

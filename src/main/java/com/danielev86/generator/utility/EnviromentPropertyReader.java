@@ -1,4 +1,4 @@
-package com.danielev86.pcmgenerator.utility;
+package com.danielev86.generator.utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
